@@ -1,0 +1,76 @@
+{% extends 'base.html'%}
+{% block title %}home{% endblock title %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'home.css'%}">
+<div class="container-fluid home" >
+   <div class="container-fluid mb-1">
+      <div id="carouselExampleFade" class="carousel slide carousel-fade">
+         <div class="carousel-inner">
+            <div class="carousel-item active">
+               <img src="https://source.unsplash.com/1600x600/?mechatronics" class="d-block w-100" alt="..."> 
+               <div class="carousel-caption d-none d-md-block">
+                  <h1>TechBLOG</h1>
+                  <h3>Share Your Knowledge</h3>
+                  <h5>TechBlog is a platform to Share Information,Updates,Project Ideas about Trending Technology </h5>
+               </div>
+            </div>
+            <div class="carousel-item">
+               <img src="https://source.unsplash.com/1600x600/?ai" class="d-block w-100" alt="..."> 
+               <div class="carousel-caption d-none d-md-block">
+                  <h1>TechBLOG</h1>
+                  <h3>Share Your Knowledge</h3>
+                  <h5>TechBLOG is a platform for Share your Thoughts,Research about trending Technology </h5>
+               </div>
+            </div>
+            <div class="carousel-item">
+               <img src="https://source.unsplash.com/1600x600/?code" class="d-block w-100" alt="..."> 
+               <div class="carousel-caption d-none d-md-block">
+                  <h1>TechBLOG</h1>
+                  <h3>About the author</h3>
+                  <h5>TechBLOG is a platform for Share your Thoughts,Research about trending Technology </h5>
+               </div>
+            </div>
+         </div>
+         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+         <span class="visually-hidden">Previous</span>
+         </button>
+         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+         <span class="carousel-control-next-icon" aria-hidden="true"></span>
+         <span class="visually-hidden">Next</span>
+         </button>
+      </div>
+   </div>
+   <div class="sidebar " style="border-radius:3px 15px 15px 3px;">
+      <a class="p-3 pt-4" href="{% url 'createblog' %}"> <img src="{% static 'fb.png' %}" ></a>
+      <a class="p-3" href="{% url 'createblog' %}"> <img src="{% static 'twitter.png' %}" ></a>
+      <a class="p-3" href="https://instagram.com/techblog571?igshid=ZDdkNTZiNTM="> <img src="{% static 'insta.png' %}" ></a>
+      <a class="p-3" href="techblog571@gamil.com"> <img src="{% static 'em.png' %}" ></a>
+      <a class="p-3 pb-4" href="{% url 'createblog' %}"> <img src="{% static 'ln.png' %}" ></a>
+   </div>
+   {% for post  in allPosts %}
+   <div class="blog">
+      <div class="card mb-4" style="width:50rem;">
+         <h6 class="card-text px-2 pt-2 py-0">post by@{{post.author}}</h6>
+         <hr>
+         <h5 class="card-text px-2">Category:{{post.category}}</h5>
+         <span class="border border-2 border-secondary rounded-top">
+         {% if post.bimage %}
+         <img src="{{post.bimage.url}}" height="400" class="card-img-top" alt="...">
+         {% endif %}
+         </span>
+         <div class="card-body">
+            <h5 class="card-title">Title:{{post.title}}</h5>
+            <h6 class="card-title"># Type:{{post.stype}}</h6>
+            <h6 class="card-title"># Link:<a href="{{post.slink}}">{{post.slink}}</a></h6>
+            <p class="card-text" style="text-align:justify;">{{post.content | truncatechars:300 }}</p>
+            <a href="{{post.geturl}}" class="btn btn-secondary"> View </a>
+            <a href="{{post.feedback}}" class="btn btn-primary">Feedback</a>
+            <p class="card-text py-1 pb-0"><small class="text-muted">Last updated {{post.timeStamp}}</small></p>
+         </div>
+      </div>
+   </div>
+   {% endfor %}
+</div>
+{% endblock body %}

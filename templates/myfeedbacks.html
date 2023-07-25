@@ -1,0 +1,21 @@
+{% extends 'myprofile.html'%}
+{% block title %}myfeedbacks{% endblock title %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'myfeedbacks.css'%}">
+{% for post  in allFeedbacks %}
+<div class="feedback">
+   <div class="card mb-4" style="width: 18rem;">
+      <div class="card-body">
+         <h5 class="card-title">Send by:{{post.sender}}</h5>
+         <hr>
+         <div>
+            <p class="list-group-item">Category:{{post.fcategory}}</p>
+            <p class="list-group-item">Title:{{post.ftitle}}</p>
+            <p class="card-text">Desc:{{post.fcontent }}</p>
+         </div>
+      </div>
+   </div>
+</div>
+{% endfor %}
+{% endblock body %}

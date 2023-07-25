@@ -1,0 +1,43 @@
+body{background: linear-gradient(110deg, #446879 60%, #537d90 60%);
+}
+.tags {
+	margin-top:-16cm;
+	padding-left:14cm;
+} 
+
+.image{
+    background-color: brown;
+}
+
+button1 {
+    --c:  	#778899	; /* the color*/
+    
+    box-shadow: 0 0 0 .1em inset var(--c); 
+    --_g: linear-gradient(var(--c) 0 0) no-repeat;
+    background: 
+      var(--_g) calc(var(--_p,0%) - 100%) 0%,
+      var(--_g) calc(200% - var(--_p,0%)) 0%,
+      var(--_g) calc(var(--_p,0%) - 100%) 100%,
+      var(--_g) calc(200% - var(--_p,0%)) 100%;
+    background-size: 50.5% calc(var(--_p,0%)/2 + .5%);
+    outline-offset: .1em;
+    transition: background-size .4s, background-position 0s .4s;
+}
+button1:hover {
+    --_p: 100%;
+    transition: background-position .4s, background-size 0s;
+}
+button1:active {
+    box-shadow: 0 0 9e9q inset #0009; 
+    background-color: var(--c);
+    color: #fff;
+}
+button1 {
+    font-family: system-ui, sans-serif;
+    font-size: 1.36rem;
+    cursor: pointer;
+    padding: .1em .6em;
+    font-weight: normal; 
+    border: none;
+}
+  

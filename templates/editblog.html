@@ -1,0 +1,53 @@
+{% extends 'myblog.html'%}
+{% block title %}editblog{% endblock title %}
+{% block body %}
+<div class="container" style="background-color:white; width:25cm;" >
+   <form method="post" action="{{post.editblog}}" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% comment %} 
+      <div class="form-group mb-3 mt-3 pt-5 px-5" style="width:10cm;">
+         <label for="author">Author</label>
+         <input type="text" class="form-control" id="author" name="author" placeholder=" " value="{{user.user}}" >
+      </div>
+      {% endcomment %}
+      <div class="form-group mb-3 px-5" >
+         <label for="category">Category</label>
+         <select class="form-select"  id="category" name="category"  style="width:6cm;" value="{{post.category}}" required>
+            <option selected disabled value="">Choose..</option>
+            <option>AI</option>
+            <option>RPA</option>
+            <option>Quantum Computing</option>
+            <option>Cyber Security</option>
+            <option>Blockchain</option>
+         </select>
+      </div>
+      <div class="form-group mb-3 px-5">
+         <label for="title">Title</label>
+         <input type="text" class="form-control" id="title" name="title" style="width:8cm;" placeholder=" " value="{{post.title}}" >
+      </div>
+      <div class="form-group mb-3 px-5" >
+         <label for="stype"># Type</label>
+         <select class="form-select"  id="stype" name="stype" style="width:6cm;" value="{{post.stype}}" required>
+            <option selected disabled value="">Choose # Type</option>
+            <option>Video</option>
+            <option>Drive</option>
+            <option>Source code</option>
+            <option>Other</option>
+         </select>
+      </div>
+      <div class="form-group mb-3 px-5">
+         <label for="slink"># link</label>
+         <input type="text" class="form-control" id="slink" name="slink" style="width:10cm;" placeholder=" " value="{{post.slink}}">
+      </div>
+      <div class="form-group mb-3 px-5 py-2" style="width:5cm;">
+         <label for="bimage">Blog Image</label>
+         <input type="file" class="form-control" id="bimage" name="bimage" value="{{default_post.bimage.url}}">
+      </div>
+      <div class="form-group mb-3 px-5 py-2 pb-3">
+         <label for="content">Blog Content</label>
+         <textarea class="form-control" id="content" name="content" rows="6" style="width:20cm;" >{{post.content}}</textarea>
+         <button class="btn btn-outline-success my-3" type="submit">Edit</button>
+      </div>
+   </form>
+</div>
+{% endblock body %}

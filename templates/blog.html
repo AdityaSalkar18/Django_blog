@@ -1,0 +1,26 @@
+{% extends 'home.html'%}
+{% block title %}blog{% endblock title %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'blog.css'%}">
+<div class="blog">
+   <div class="card mb-4" style="width:80rem;">
+      <h6 class="card-text px-2 pt-2 py-0">post by@{{post.author}}</h6>
+      <hr>
+      <h5 class="card-text px-2">Category:{{post.category}}</h5>
+      <span class="border border-2 border-secondary rounded-top">
+      {% if post.bimage %}
+      <img src="{{post.bimage.url}}" height="600"class="card-img-top" alt="...">
+      {% endif %}
+      </span>
+      <div class="card-body">
+         <h5 class="card-title">Title:{{post.title}}</h5>
+         <h6 class="card-title"># Type:{{post.stype}}</h6>
+         <h6 class="card-title"># Link:<a href="{{post.slink}}">{{post.slink}}</a></h6>
+         <p class="card-text">{{post.content}}</p>
+         <p class="card-text py-2"><small class="text-muted">Last updated {{post.timeStamp}}</small></p>
+      </div>
+   </div>
+   <a href="{{post.feedback}}" class="btn btn-primary">Feedback</a>
+</div>
+{% endblock body %}

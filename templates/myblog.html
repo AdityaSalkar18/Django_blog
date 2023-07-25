@@ -1,0 +1,30 @@
+{% extends 'myprofile.html'%}
+{% block title %}myblog{% endblock title %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'myblog.css'%}">
+<div class="heading">
+   <h1>@My Blogs</h1>
+</div>
+{% for post  in allPosts %}
+<div class="blog">
+   <div class="card mb-4" style="width:45rem;">
+      <h5 class="card-text px-2">Category:{{post.category}}</h5>
+      <span class="border border-2 border-secondary rounded-top">
+      {% if post.bimage %}
+      <img src="{{post.bimage.url}}" height="400" class="card-img-top" alt="...">
+      {% endif %}
+      </span>
+      <div class="card-body">
+         <h5 class="card-title">Title:{{post.title}}</h5>
+         <h6 class="card-title"># Type:{{post.stype}}</h6>
+         <h6 class="card-title"># Link:<a href="{{post.slink}}">{{post.slink}}</a></h6>
+         <p class="card-text" style="text-align:justify;">{{post.content | truncatechars:200}}</p>
+         <a href="{{post.geturl}}" class="btn btn-secondary">View</a>
+         <a href="{{post.editblog}}" class="btn btn-secondary">Edit</a>
+         <p class="card-text py-2"><small class="text-muted">Last updated {{post.timeStamp}}</small></p>
+      </div>
+   </div>
+</div>
+{% endfor %}
+{% endblock body %}

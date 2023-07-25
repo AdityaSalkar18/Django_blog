@@ -1,0 +1,86 @@
+{% extends 'base.html'%}
+{% block title %}myprofile{% endblock title %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'myprofile.css'%}">
+<div class="container-fluid profile">
+<div class="row">
+   <div class="col-lg-3 mx-5 my-3">
+      <div class="card mb-3" style="background: linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%), radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%);
+         background-blend-mode: screen;">
+         <div class="card-body text-center">
+            <div class="container" style="width:5cm; height:5cm;">
+               {% if user.pimage %}
+               <img src="{{user.pimage.url}}" alt="Avatar" class="rounded-circle img-fluid" style="width:180px; height:180px; border-radius:50%; border:2px solid grey;">
+               {% endif %}
+            </div>
+            <h5 class="my-3">{{user.user}}</h5>
+            <p class="text mb-1" style="color:black">Profession:{{user.profession}} </p>
+            <div class="d-flex justify-content-center align-items-center rounded-3  p-2 mb-2" 
+               style= "width:90px justify-content-center; background-color: #efefef;">
+               <div>
+                  <p class="small text-muted mb-1">Blog</p>
+                  <p class="mb-0">{{user.noblog}}</p>
+               </div>
+            </div>
+            <li class="list-group-item  align-items-center mx-1 p-3"><a class="profile-item mb-5 " href="/profile">Update my profile</a></li>
+            <a href="/myfeedbacks" class="btn btn-primary">@Feedbacks</a>
+         </div>
+      </div>
+      <div class="card mb-4 mb-lg-0">
+         <div class="card-body p-0" style="background: linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%), radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%);
+            background-blend-mode: screen;">
+            <ul class="list-group list-group-flush rounded-3" >
+               <li class="list-group-item d-flex justify-content-center align-items-center  p-3" style="background: linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%), radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%);
+                  background-blend-mode: screen;">
+                  <i class="fas fa-globe fa-lg  text-warning"></i>
+                  <h5 class="mb-0">Personal Info</h5>
+               </li>
+               <li class="list-group-item d-flex  align-items-center mx-2 p-3" style="background: linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%), radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%);
+                  background-blend-mode: screen;">
+                  <p class="mb-0">Name: </p>
+                  <p class="text mb-0" style="color:black">{{user.pname}}</p>
+               </li>
+               <li class="list-group-item d-flex  align-items-center mx-2 p-3" style="background: linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%), radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%);
+                  background-blend-mode: screen;">
+                  <p class="mb-0">Email: </p>
+                  <p class="text mb-0" style="color:black">{{user.email}}</p>
+               </li>
+               <li class="list-group-item d-flex  align-items-center mx-2 p-3" style="background: linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%), radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%);
+                  background-blend-mode: screen;">
+                  <p class="mb-0">Clg/Comp Name: </p>
+                  <p class="text mb-0" style="color:black">{{user.clgname}}</p>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </div>
+   <div class="tags">
+      <main>
+         <div class="aboutme pb-2" style="width:25cm; height:5cm;">
+            <h5 class="pb-2" style="text-align:justify; font-size:22px">About Me</h5>
+            <p class="p-2" style="text-align:justify; font-size:20px">
+               {{user.aboutme}}
+            </p>
+         </div>
+         <ul>
+            <div class="icon p-2 pt-3">
+               <a href="{{user.ilink}}"> <img src="{% static 'instagram.png' %}" alt="instagram.png" style="width:1cm;height:1cm;"> </a>
+            </div>
+            <div class="icon p-2">
+               <a href="{{user.flink}}"> <img src="{% static 'facebook.png' %}" alt="instagram.png" style="width:1cm;height:1cm;"> </a>
+            </div>
+            <div class="icon p-2">
+               <a href="{{user.llink}}"> <img src="{% static 'linkedin.png' %}" alt="instagram.png" style="width:1cm;height:1cm;"> </a>
+            </div>
+         </ul>
+         <div class="btn mx-5 py-3 px-3">
+            <button1 style="border-radius:15px" onclick="window.location.href='/createblog';">CreateBlog</button1>
+         </div>
+         <div class="btn mx-5 py-3 px-3">
+            <button1 style="border-radius:15px"  onclick="window.location.href='/myblog';">MyBlogs</button1>
+         </div>
+      </main>
+   </div>
+</div>
+{% endblock body %}

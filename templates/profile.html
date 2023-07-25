@@ -1,0 +1,53 @@
+{% extends 'myprofile.html'%}
+{% block title %}profile{% endblock title %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'profile.css'%}">
+<div class="container" style="background-color:white; width:25cm;" >
+   <form method="post" action="/profile/" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group mb-3 mt-3 pt-5 px-5">
+         <label for="pname">Name</label>
+         <input type="text" class="form-control" id="pname" name="pname" style="width:8cm;" placeholder=" " >
+      </div>
+      <div class="form-group mb-3 px-5 py-2" style="width:5cm;">
+         <label for="pimage">Profile Image</label>
+         <input type="file" class="form-control" id="pimage" name="pimage">
+      </div>
+      <div class="form-group mb-3 px-5">
+         <label for="email">Email Address</label>
+         <input type="email" class="form-control" id="email" name="email" style="width:8cm;"placeholder=" " >
+      </div>
+      <div class="form-group mb-3 px-5">
+         <label for="profession">Profession</label>
+         <input type="text" class="form-control" id="profession" name="profession" style="width:5cm;" placeholder=" " >
+      </div>
+      <div class="form-group mb-3 px-5">
+         <label for="clgname">Clg/Comp Name</label>
+         <input type="text" class="form-control" id="clgname" name="clgname" style="width:8cm;"placeholder=" " >
+      </div>
+      <div class="form-group mb-3 px-5">
+         <label for="noblog">No of Blog</label>
+         <input type="text" class="form-control" id="noblog" name="noblog" style="width:3cm;" placeholder=" " >
+      </div>
+      <div class="form-group mb-3 px-5">
+         <label for="ilink">Instagram Account Link</label>
+         <input type="text" class="form-control" id="ilink" name="ilink" style="width:10cm;" placeholder=" " >
+      </div>
+      <div class="form-group mb-3 px-5">
+         <label for="flink">Facebook Account Link</label>
+         <input type="text" class="form-control" id="flink" name="flink" style="width:10cm;" placeholder=" " >
+      </div>
+      <div class="form-group mb-3 px-5">
+         <label for="llink">Linkdin Account Link</label>
+         <input type="text" class="form-control" id="llink" name="llink" style="width:10cm;" placeholder=" " >
+      </div>
+      <div class="form-group mb-3 px-5 py-2 pb-3">
+         <label for="aboutme">About me</label>
+         <textarea class="form-control" id="aboutme" name="aboutme" rows="5" style="width:20cm;" ></textarea>
+         <button class="btn btn-outline-success my-3" type="submit">Update</button>
+      </div>
+</div>
+</form>
+</div> 
+{% endblock body %}
